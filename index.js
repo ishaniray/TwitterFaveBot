@@ -1,12 +1,19 @@
+require('dotenv').config();
+
 const Twitter = require('twitter');
-const config = require('./config.js');
-const T = new Twitter(config);
+const apiKeys = {
+  consumer_key: process.env.CONSUMER_KEY,
+  consumer_secret: process.env.CONSUMER_SECRET,
+  access_token_key: process.env.ACCESS_TOKEN_KEY,
+  access_token_secret: process.env.ACCESS_TOKEN_SECRET
+}
+const T = new Twitter(apiKeys);
 
 // Set up your search parameters
 const params = {
   q: 'Cerner',
   count: 10,
-  result_type: 'popular', // this can be 'recent' or 'mixed'
+  result_type: 'recent', // this can be 'recent' or 'mixed'
   lang: 'en'
 }
 
